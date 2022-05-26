@@ -1,0 +1,56 @@
+[
+    {
+        "_id": 1,
+        "name": "Monitor",
+        "description": "A computer monitor is an output device that displays information in pictorial or text form. A monitor usually comprises a visual display, some circuitry, a casing, and a power supply.",
+        "price": 10000,
+        "minimum_quantity": 10,
+        "available_quantity": 550,
+        "img": "https://i.ibb.co/WFrdnPY/parts1.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "Keyboard",
+        "description": "A computer keyboard is a peripheral input device modeled after the typewriter keyboard which uses an arrangement of buttons or keys to act as mechanical levers or electronic switches.",
+        "price": 6000,
+        "minimum_quantity": 10,
+        "available_quantity": 250,
+        "img": "https://i.ibb.co/LQqkr6J/parts2.jpg"
+    },
+    {
+        "_id": 3,
+        "name": "Mouse",
+        "description": "The mouse is a small, movable device that lets you control a range of things on a computer. Most types of mouse have two buttons, and some will have a wheel in between the buttons.",
+        "price": 3000,
+        "minimum_quantity": 10,
+        "available_quantity": 150,
+        "img": "https://i.ibb.co/hZD3zXS/parts3.jpg"
+    },
+    {
+        "_id": 4,
+        "name": "Processor",
+        "description": "A processor (CPU) is the logic circuitry that responds to and processes the basic instructions that drive a computer. ",
+        "price": 2000,
+        "minimum_quantity": 10,
+        "available_quantity": 200,
+        "img": "https://i.ibb.co/m5P8Tf7/parts4.jpg"
+    },
+    {
+        "_id": 5,
+        "name": "Hard Disk",
+        "description": "Hard disk, also called hard disk drive or hard drive, magnetic storage medium for a computer. Hard disks are flat circular plates made of aluminum or glass and coated with a magnetic material.",
+        "price": 3000,
+        "minimum_quantity": 10,
+        "available_quantity": 350,
+        "img": "https://i.ibb.co/mJQ5dz2/parts5.jpg"
+    },
+    {
+        "_id": 6,
+        "name": "CPU",
+        "description": "",
+        "price": 15000,
+        "minimum_quantity": 10,
+        "available_quantity": 400,
+        "img": "https://i.ibb.co/g61GrPX/parts6.jpg"
+    }
+]
