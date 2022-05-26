@@ -47,7 +47,7 @@
     {
         "_id": 6,
         "name": "CPU",
-        "description": "",
+        "description": "A central processing unit (CPU), also called a central processor, main processor or just processor, is the electronic circuitry that executes instructions comprising a computer program. ",
         "price": 15000,
         "minimum_quantity": 10,
         "available_quantity": 400,
