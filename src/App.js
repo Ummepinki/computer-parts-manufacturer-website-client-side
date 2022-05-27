@@ -3,6 +3,7 @@ import './App.css';
 import Blogs from "./Pages/Blogs/Blogs";
 import Home from "./Pages/Home/Home";
 import Purchase from "./Pages/Home/Purchase";
+import Login from "./Pages/Login/Login";
 import Navbar from "./Shared/Navbar";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/part/:partId" element={<Purchase />} />
+        <Route path="/login" element={<Login />} />
 
 
       </Routes>
