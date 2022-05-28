@@ -1,15 +1,65 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 
 const Purchase = ({ orders }) => {
-    const { name, minimum_quantity } = orders;
+
+    const { name, available_quantity, minimum_quantity } = orders;
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const [quantity, setQuantity] = useState(minimum_quantity);
+    const [phone, setPhone] = useState('');
+    const [quantityError, setQuantityError] = useState('');
+    const [isFromValid, setIsFromValid] = useState(true);
 
 
     const handlePurchase = event => {
         event.preventDefault();
-        const minimum_quantity = event.target.minimum_quantity.value;
-        console.log(minimum_quantity);
+
+    }
+
+    const handleChangeName = (e) => {
+        e.preventDefault();
+        const value = e.target.value;
+        setUsername(value);
+    }
+    const handleChangeEmail = (e) => {
+        e.preventDefault();
+        const value = e.target.value;
+        setEmail(value);
+    }
+    const handleChangeAddress = (e) => {
+        e.preventDefault();
+        const value = e.target.value;
+        setAddress(value);
+    }
+    const handleChangeQuantity = (e) => {
+        e.preventDefault();
+        const value = e.target.value;
+        if (value < minimum_quantity) {
+            setQuantityError(`your have to purchase at least ${minimum_quantity}`);
+            setIsFromValid(false);
+
+        }
+        else if (value > available_quantity) {
+            setQuantityError(`you can not  purchase more than ${available_quantity}`)
+            setIsFromValid(false);
+        }
+        else {
+            setQuantityError('');
+            setIsFromValid(true);
+        }
+
+
+        setQuantity(value);
+
+
+    }
+    const handleChangePhone = (e) => {
+        e.preventDefault();
+        const value = e.target.value;
+        setPhone(value);
     }
     return (
         <div>
@@ -23,22 +73,17 @@ const Purchase = ({ orders }) => {
                     <h3 class="font-bold text-lg mb-2">Order for:{name}</h3>
                     <form onSubmit={handlePurchase} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
                         <span class="label-text">Name</span>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        <input type="text" value={username} onChange={handleChangeName} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
                         <span class="label-text">Email</span>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        <input type="text" value={email} onChange={handleChangeEmail} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
                         <span class="label-text">Address</span>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        <input type="text" value={address} onChange={handleChangeAddress} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
                         <span class="label-text">Quantity</span>
-                        <select name=" minimum_quantity " class="select select-bordered w-full max-w-xs">
-                            <option>{minimum_quantity}</option>
-                            <option>11</option>
-                            <option>9</option>
-                            <option>8</option>
-
-                        </select>
+                        <input type="text" value={quantity} onChange={handleChangeQuantity} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        {quantityError && <div className='text-red-500'>  {quantityError} </div>}
                         <span class="label-text">Phone Number</span>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        <input type="submit" value="submit" class="btn btn-accent w-full max-w-xs" />
+                        <input type="text" value={phone} onChange={handleChangePhone} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        <input type="submit" disabled={!isFromValid} value="submit" class="btn btn-accent w-full max-w-xs" />
                     </form>
                 </div>
             </div>

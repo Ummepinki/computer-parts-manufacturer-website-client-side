@@ -40,7 +40,7 @@ const Signup = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
         console.log('update done');
-        navigate('/purchase');
+        navigate('/');
     }
     return (
         <div className='flex h-screen justify-center items-center'>
