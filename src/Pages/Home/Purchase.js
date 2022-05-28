@@ -1,8 +1,10 @@
 
 import React from 'react';
 
+
 const Purchase = ({ orders }) => {
     const { name, minimum_quantity } = orders;
+
 
     const handlePurchase = event => {
         event.preventDefault();

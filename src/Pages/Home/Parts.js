@@ -1,11 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Part from './Part';
-import Purchase from './Purchase';
 
 const Parts = () => {
     const [parts, setParts] = useState([]);
-    const [orders, setOrders] = useState(null);
+
 
     useEffect(() => {
         fetch('http://localhost:5000/parts')
@@ -24,11 +23,11 @@ const Parts = () => {
                     parts.map(part => <Part
                         key={part._id}
                         part={part}
-                        setOrders={setOrders}
+
                     ></Part>)
                 }
             </div>
-            {orders && <Purchase orders={orders}></Purchase>}
+
         </div>
     );
 };

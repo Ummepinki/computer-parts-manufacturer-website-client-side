@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home";
 import Purchase from "./Pages/Home/Purchase";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Login/Signup";
+import PartsDetail from "./Pages/PartsDetail/PartsDetail";
 import Navbar from "./Shared/Navbar";
 
 function App() {
@@ -14,9 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
-        <Route path="/part/:partId" element={<Purchase />} />
+        <Route path="/purchase" element={<Purchase />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path='/part/:partId' element={<PartsDetail></PartsDetail>}></Route>
 
 
       </Routes>

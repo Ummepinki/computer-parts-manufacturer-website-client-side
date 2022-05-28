@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const Part = ({ part, setOrders }) => {
-    const { name, img, description, minimum_quantity, price, available_quantity } = part;
+    const { _id, name, img, description, minimum_quantity, price, available_quantity } = part;
+
+    const navigate = useNavigate();
+    const navigateToItemDetails = id => {
+        navigate(`/part/${id}`)
+    }
 
     return (
         <div className="card lg:max-w-lg bg-base-100 shadow-xl">
@@ -15,9 +22,13 @@ const Part = ({ part, setOrders }) => {
                 <p>Minimum Quantity:{minimum_quantity}</p>
                 <p>Available Quantity:{available_quantity}</p>
 
-                <label for="purchase-modal"
-                    onClick={() => setOrders(part)}
-                    class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Buy Now</label>
+                <button onClick={() => navigateToItemDetails(_id)}
+                    class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary"
+                >
+                    Buy Now</button>
+
+
+
 
 
 
