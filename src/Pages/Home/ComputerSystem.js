@@ -2,10 +2,10 @@ import React from 'react';
 import system from '../../assets/images/system.jpg';
 const ComputerSystem = () => {
     return (
-        <div class="hero min-h-screen ">
+        <div className="hero min-h-screen ">
 
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src={system} class="max-w-sm rounded-lg shadow-2xl" alt='' />
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <img src={system} className="max-w-sm rounded-lg shadow-2xl" alt='' />
                 <div>
                     <h2 className='text-3xl mb-3 font-semibold'>Computer System</h2>
                     <p>A Computer system is defined as combination of components designed to process data and store files.

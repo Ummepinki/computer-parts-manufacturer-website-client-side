@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 
 
+
 const Purchase = ({ orders }) => {
 
-    const { name, available_quantity, minimum_quantity } = orders;
+    const { _id, name, available_quantity, minimum_quantity } = orders;
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
@@ -14,8 +15,36 @@ const Purchase = ({ orders }) => {
     const [isFromValid, setIsFromValid] = useState(true);
 
 
+
     const handlePurchase = event => {
         event.preventDefault();
+
+        const booking = {
+            orders: _id,
+            ordersName: name,
+            customerName: username,
+            customerEmail: email,
+            customerAddress: address,
+            customerQuantity: minimum_quantity,
+            phone: phone
+
+
+        }
+
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+            })
+
+
 
     }
 
@@ -61,29 +90,30 @@ const Purchase = ({ orders }) => {
         const value = e.target.value;
         setPhone(value);
     }
+
     return (
         <div>
 
-            <input type="checkbox" id="purchase-modal" class="modal-toggle" />
+            <input type="checkbox" id="purchase-modal" className="modal-toggle" />
 
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
                     <h2 className='font-bold text-lg text-center '>Purchase Product</h2>
-                    <label for="purchase-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 class="font-bold text-lg mb-2">Order for:{name}</h3>
+                    <label for="purchase-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 className="font-bold text-lg mb-2">Order for:{name}</h3>
                     <form onSubmit={handlePurchase} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
-                        <span class="label-text">Name</span>
-                        <input type="text" value={username} onChange={handleChangeName} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        <span class="label-text">Email</span>
-                        <input type="text" value={email} onChange={handleChangeEmail} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        <span class="label-text">Address</span>
-                        <input type="text" value={address} onChange={handleChangeAddress} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        <span class="label-text">Quantity</span>
-                        <input type="text" value={quantity} onChange={handleChangeQuantity} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        <span className="label-text">Name</span>
+                        <input type="text" value={username} onChange={handleChangeName} placeholder="your name" className="input input-bordered w-full max-w-xs" />
+                        <span className="label-text">Email</span>
+                        <input type="text" value={email} onChange={handleChangeEmail} placeholder="your email" className="input input-bordered w-full max-w-xs" />
+                        <span className="label-text">Address</span>
+                        <input type="text" value={address} onChange={handleChangeAddress} placeholder="address" className="input input-bordered w-full max-w-xs" />
+                        <span className="label-text">Quantity</span>
+                        <input type="text" value={quantity} onChange={handleChangeQuantity} className="input input-bordered w-full max-w-xs" />
                         {quantityError && <div className='text-red-500'>  {quantityError} </div>}
-                        <span class="label-text">Phone Number</span>
-                        <input type="text" value={phone} onChange={handleChangePhone} placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                        <input type="submit" disabled={!isFromValid} value="submit" class="btn btn-accent w-full max-w-xs" />
+                        <span className="label-text">Phone Number</span>
+                        <input type="text" value={phone} onChange={handleChangePhone} placeholder="Phone number" className="input input-bordered w-full max-w-xs" />
+                        <input type="submit" disabled={!isFromValid} value="submit" className="btn btn-accent w-full max-w-xs" />
                     </form>
                 </div>
             </div>

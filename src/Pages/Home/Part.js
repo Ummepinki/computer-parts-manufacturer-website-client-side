@@ -23,7 +23,7 @@ const Part = ({ part, setOrders }) => {
                 <p>Available Quantity:{available_quantity}</p>
 
                 <button onClick={() => navigateToItemDetails(_id)}
-                    class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary"
+                    className="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary"
                 >
                     Buy Now</button>
 
