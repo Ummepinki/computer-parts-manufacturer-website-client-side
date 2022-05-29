@@ -20,12 +20,12 @@ const Purchase = ({ orders }) => {
         event.preventDefault();
 
         const booking = {
-            orders: _id,
+            ordersId: _id,
             ordersName: name,
             customerName: username,
             customerEmail: email,
             customerAddress: address,
-            customerQuantity: minimum_quantity,
+            customerQuantity: quantity,
             phone: phone
 
 
@@ -42,7 +42,7 @@ const Purchase = ({ orders }) => {
             .then(data => {
                 console.log(data);
 
-            })
+            });
 
 
 
