@@ -6,6 +6,7 @@ import Loading from '../../Shared/Loading';
 import { Link, useNavigate } from 'react-router-dom';
 import useToken from '../../hooks/useToken';
 
+
 const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -20,12 +21,11 @@ const Signup = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const navigate = useNavigate();
-    const [token] = useToken(user || gUser);
+    const [token] = useToken(user || gUser)
 
     let signInError;
-
-    if (token) {
-        navigate('/home');
+    if (user || gUser) {
+        console.log(user || gUser);
     }
 
     if (loading || gLoading || updating) {
