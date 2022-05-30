@@ -1,11 +1,14 @@
 
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 
 const Purchase = ({ orders }) => {
 
     const { _id, name, available_quantity, minimum_quantity } = orders;
+    const [user] = useAuthState(auth);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
@@ -22,8 +25,8 @@ const Purchase = ({ orders }) => {
         const booking = {
             ordersId: _id,
             ordersName: name,
-            customerName: username,
-            customerEmail: email,
+            customerName: user.displayName,
+            customerEmail: user.email,
             customerAddress: address,
             customerQuantity: quantity,
             phone: phone
@@ -31,7 +34,7 @@ const Purchase = ({ orders }) => {
 
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://protected-plateau-82864.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -103,9 +106,9 @@ const Purchase = ({ orders }) => {
                     <h3 className="font-bold text-lg mb-2">Order for:{name}</h3>
                     <form onSubmit={handlePurchase} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
                         <span className="label-text">Name</span>
-                        <input type="text" value={username} onChange={handleChangeName} placeholder="your name" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" disabled value={user?.displayName || ''} onChange={handleChangeName} placeholder="your name" className="input input-bordered w-full max-w-xs" />
                         <span className="label-text">Email</span>
-                        <input type="text" value={email} onChange={handleChangeEmail} placeholder="your email" className="input input-bordered w-full max-w-xs" />
+                        <input type="text" disabled value={user?.email || ''} onChange={handleChangeEmail} placeholder="your email" className="input input-bordered w-full max-w-xs" />
                         <span className="label-text">Address</span>
                         <input type="text" value={address} onChange={handleChangeAddress} placeholder="address" className="input input-bordered w-full max-w-xs" />
                         <span className="label-text">Quantity</span>
