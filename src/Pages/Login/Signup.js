@@ -24,8 +24,9 @@ const Signup = () => {
     const [token] = useToken(user || gUser)
 
     let signInError;
-    if (user || gUser) {
-        console.log(user || gUser);
+    if (token) {
+        navigate('/parts')
+        //console.log(user || gUser);
     }
 
     if (loading || gLoading || updating) {
