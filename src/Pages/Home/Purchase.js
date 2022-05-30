@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-
+import { toast } from 'react-toastify';
 
 
 const Purchase = ({ orders }) => {
@@ -43,7 +43,14 @@ const Purchase = ({ orders }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (data.success) {
+                    toast('Orders is set')
+                }
+                else {
+                    toast('Already have an order')
+
+
+                }
 
             });
 

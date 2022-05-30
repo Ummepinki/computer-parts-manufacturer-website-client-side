@@ -9,7 +9,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://protected-plateau-82864.herokuapp.com/booking?customerEmail= ${user.customerEmail}`)
+            fetch(`https://protected-plateau-82864.herokuapp.com/booking?customerEmail=${user.email}`)
                 .then(res => res.json())
                 .then(data => setOrder(data));
 
