@@ -1,11 +1,58 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 const AddProduct = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const imageStorageKey = 'd210d1e87aa80d4c301af0ee84ba1ed2';
 
 
     const onSubmit = async data => {
-        console.log('data', data);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url;
+                    const product = {
+                        name: data.name,
+                        email: data.email,
+                        price: data.price,
+                        minimum_quantity: data.minimum_quantity,
+                        available_quantity: data.available_quantity,
+                        img: img
+
+                    }
+
+                    fetch('http://localhost:5000/product', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
+                            if (inserted.insertedId) {
+                                toast.success('product added successfully');
+                                reset();
+                            }
+                            else {
+                                toast.error('failed to add product');
+                            }
+                        })
+
+                }
+
+
+            })
 
     }
     return (
@@ -15,11 +62,11 @@ const AddProduct = () => {
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text"> Product Name</span>
                     </label>
                     <input
                         type="text"
-                        placeholder="Your Name"
+                        placeholder="Product Name"
                         className="input input-bordered w-full max-w-xs"
                         {...register("name", {
                             required: {
@@ -86,10 +133,10 @@ const AddProduct = () => {
                         type="number"
                         placeholder="Minimum Quantity"
                         className="input input-bordered w-full max-w-xs"
-                        {...register("Minimum Quantity", {
+                        {...register("minimum_quantity", {
                             required: {
                                 value: true,
-                                message: 'Minimum Quantity is Required'
+                                message: 'minimum_quantity is Required'
                             },
 
                         })}
@@ -108,10 +155,10 @@ const AddProduct = () => {
                         type="number"
                         placeholder="Available Quantity"
                         className="input input-bordered w-full max-w-xs"
-                        {...register("Available Quantity", {
+                        {...register("available_quantity", {
                             required: {
                                 value: true,
-                                message: 'Available Quantity is Required'
+                                message: 'available_quantity is Required'
                             },
 
                         })}
@@ -119,6 +166,24 @@ const AddProduct = () => {
                     <label className="label">
                         {errors.available_quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.available_quantity.message}</span>}
                         {errors.available_quantity?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.available_quantity.message}</span>}
+                    </label>
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text"> Photo</span>
+                    </label>
+                    <input
+                        type="file"
+                        className="input input-bordered w-full max-w-xs"
+                        {...register("image", {
+                            required: {
+                                value: true,
+                                message: 'Image is Required'
+                            }
+                        })}
+                    />
+                    <label className="label">
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                     </label>
                 </div>
 
