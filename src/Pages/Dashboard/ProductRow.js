@@ -1,7 +1,11 @@
 import React from 'react';
 
-const ProductRow = ({ product, index }) => {
+
+const ProductRow = ({ product, index, refetch, setDeleteProduct }) => {
     const { name, price, minimum_quantity, available_quantity, img } = product;
+
+
+
     return (
         <tr>
             <th>{index + 1}</th>
@@ -15,7 +19,10 @@ const ProductRow = ({ product, index }) => {
             <td>{price}</td>
             <td>{minimum_quantity}</td>
             <td>{available_quantity}</td>
-            <td><button class="btn btn-xs btn-error">Delete</button></td>
+            <td>
+                <label onClick={() => setDeleteProduct(product)} for="delete-confirm-modal" class="btn btn-xs btn-error">Delete</label>
+
+            </td>
         </tr>
     );
 };
