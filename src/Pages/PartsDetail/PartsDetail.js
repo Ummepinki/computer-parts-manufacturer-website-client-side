@@ -12,7 +12,7 @@ const PartsDetail = (part) => {
     const path = partId ? "/purchase/" + partId : "/purchase"
 
     useEffect(() => {
-        const url = `http://localhost:5000/parts`;
+        const url = `https://protected-plateau-82864.herokuapp.com/parts`;
         fetch(url)
             .then(res => res.json())
             .then(data => {

@@ -38,7 +38,7 @@ const Purchase = ({ orders, setOrders }) => {
 
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://protected-plateau-82864.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

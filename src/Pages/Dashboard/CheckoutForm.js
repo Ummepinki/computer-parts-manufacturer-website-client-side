@@ -16,7 +16,7 @@ const CheckoutForm = ({ order }) => {
     const { _id, price, customerEmail, customerName } = order;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://protected-plateau-82864.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -87,7 +87,7 @@ const CheckoutForm = ({ order }) => {
                 transactionId: paymentIntent.id
             }
 
-            fetch(`http://localhost:5000/booking/${_id}`, {
+            fetch(`https://protected-plateau-82864.herokuapp.com/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

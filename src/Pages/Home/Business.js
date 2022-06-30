@@ -7,7 +7,7 @@ import PrimaryButton from '../../Shared/PrimaryButton';
 
 const Business = () => {
     return (
-        <div className='mt-5'>
+        <div className='mt-6'>
             <div>
                 <h1 className='text-3xl font-bold text-primary text-center mb-2 mt-3'>Business Summary</h1>
             </div>
@@ -37,7 +37,7 @@ const Business = () => {
             <div class="card w-50  shadow-xl ">
                 <div class="card-body ">
                     <div class="card-actions justify-end">
-                        <p className='text-5xl text-primary font-bold'>Have any question about us or get a product request ?</p>
+                        <p className='text-4xl text-primary font-bold'>Have any question about us or get a product request ?</p>
                     </div>
                     <p className='text-3xl'>Don,t hesitate to contract us.</p>
                 </div>

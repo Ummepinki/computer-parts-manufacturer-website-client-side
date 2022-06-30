@@ -9,7 +9,7 @@ import CheckoutForm from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51LEwZgF9XkD0LJbNlNAE8fElddBb1euv1PlC8N7zzhNnLUEenSZaRozwGFf3L1Vras1h6rReWmYJjDa4O0c99JGD00OuNzk9jw');
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/booking/${id}`;
+    const url = `https://protected-plateau-82864.herokuapp.com/booking/${id}`;
     const { data: order, isLoading } = useQuery(['booking', id], () => fetch(url, {
         method: 'GET',
         headers: {

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Blogs = () => {
     return (
         <div className='mt-2 text-center'>
@@ -30,6 +31,7 @@ const Blogs = () => {
                 ii. Initialize it with 1.
                 iii. In a loop traverse through each element (or get each element from user) multiply each element to product.
                 iv. Print the product.</p>
+            <p>product name find code: product.name </p>
             <br />
             <h2 className='font-bold'>Q.5:What is unit test? Why should write units test?</h2>
             <p>Ans:Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. This testing methodology is done during the development process by the software developers and sometimes QA staff.<br />

@@ -30,7 +30,7 @@ const AddProduct = () => {
 
                     }
 
-                    fetch('http://localhost:5000/product', {
+                    fetch('https://protected-plateau-82864.herokuapp.com/product', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -57,7 +57,7 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <h2 className='text-1xl'>Add a new product</h2>
+            <h2 className='text-3xl'>Add a new product</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="form-control w-full max-w-xs">
