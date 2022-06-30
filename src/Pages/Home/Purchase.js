@@ -5,9 +5,9 @@ import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 
 
-const Purchase = ({ orders }) => {
+const Purchase = ({ orders, setOrders }) => {
 
-    const { _id, name, available_quantity, minimum_quantity } = orders;
+    const { _id, name, available_quantity, minimum_quantity, price } = orders;
     const [user] = useAuthState(auth);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -22,6 +22,9 @@ const Purchase = ({ orders }) => {
     const handlePurchase = event => {
         event.preventDefault();
 
+        setOrders(null);
+
+
         const booking = {
             ordersId: _id,
             ordersName: name,
@@ -29,12 +32,13 @@ const Purchase = ({ orders }) => {
             customerEmail: user.email,
             customerAddress: address,
             customerQuantity: quantity,
+            price,
             phone: phone
 
 
         }
 
-        fetch('https://protected-plateau-82864.herokuapp.com/booking', {
+        fetch('http://localhost:5000/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

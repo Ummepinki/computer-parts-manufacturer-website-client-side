@@ -12,7 +12,7 @@ const PartsDetail = (part) => {
     const path = partId ? "/purchase/" + partId : "/purchase"
 
     useEffect(() => {
-        const url = `https://protected-plateau-82864.herokuapp.com/parts`;
+        const url = `http://localhost:5000/parts`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -32,7 +32,7 @@ const PartsDetail = (part) => {
             <label for="purchase-modal"
                 onClick={() => setOrders(parts)}
                 className="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Buy Now</label>
-            {orders && <Purchase orders={parts}  ></Purchase>}
+            {orders && <Purchase orders={orders} setOrders={setOrders}  ></Purchase>}
         </div>
 
     );
