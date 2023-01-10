@@ -1,28 +1,30 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const useAdmin = user => {
-    const [admin, setAdmin] = useState(false);
-    const [adminLoading, setAdminLoading] = useState(true);
-    useEffect(() => {
-        const email = user?.email;
-        if (email) {
-            fetch(`https://protected-plateau-82864.herokuapp.com/admin/${email}`, {
-                method: 'GET',
-                headers: {
-                    'content-type': 'application/json',
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                },
-
-            })
-                .then(res => res.json())
-                .then(data => {
-                    setAdmin(data.admin);
-                    setAdminLoading(false);
-                })
+const useAdmin = (user) => {
+  const [admin, setAdmin] = useState(false);
+  const [adminLoading, setAdminLoading] = useState(true);
+  useEffect(() => {
+    const email = user?.email;
+    if (email) {
+      fetch(
+        `https://manufacturer-website-server-side-topaz.vercel.app/admin/${email}`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
         }
-    }, [user])
-    return [admin, adminLoading]
-}
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setAdmin(data.admin);
+          setAdminLoading(false);
+        });
+    }
+  }, [user]);
+  return [admin, adminLoading];
+};
 
 export default useAdmin;
