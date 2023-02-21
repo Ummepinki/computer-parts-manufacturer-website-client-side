@@ -8,5 +8,6 @@ Live Link : https://manufacturer-website-6d06c.web.app/
 
 * Responsive Design
 
-- Technologies
+- Technologies:
+  <br />
   Tailwind, DaisyUi , ReactHookForm, React.js, Node.js ,Firebase for authentication and hosting, MongoDB, Vercel server hosting site
