@@ -4,15 +4,12 @@ import { toast } from "react-toastify";
 const DeleteConfirmModal = ({ deleteProduct, refetch, setDeleteProduct }) => {
   const { name, email } = deleteProduct;
   const handleDelete = () => {
-    fetch(
-      `https://manufacturer-website-server-side-topaz.vercel.app/product/${email}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
+    fetch(`http://localhost:5000/product/${email}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

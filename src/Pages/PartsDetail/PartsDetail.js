@@ -10,7 +10,7 @@ const PartsDetail = (part) => {
   const path = partId ? "/purchase/" + partId : "/purchase";
 
   useEffect(() => {
-    const url = `https://manufacturer-website-server-side-topaz.vercel.app/parts`;
+    const url = `http://localhost:5000/parts`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

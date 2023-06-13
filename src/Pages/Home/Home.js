@@ -7,6 +7,7 @@ import ComputerSystem from "./ComputerSystem";
 import Contract from "./Contract";
 import Parts from "./Parts";
 import Reviews from "./Reviews";
+import OtherInfo from "./OtherInfo";
 
 const Home = () => {
   return (
@@ -17,8 +18,8 @@ const Home = () => {
       <Reviews></Reviews>
       <Business></Business>
       <Categories></Categories>
+      <OtherInfo></OtherInfo>
       <Contract></Contract>
-
       <Footer></Footer>
     </div>
   );

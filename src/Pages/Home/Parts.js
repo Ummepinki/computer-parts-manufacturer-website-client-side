@@ -5,7 +5,7 @@ const Parts = () => {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch("https://manufacturer-website-server-side-topaz.vercel.app/parts")
+    fetch("http://localhost:5000/parts")
       .then((res) => res.json())
       .then((data) => setParts(data));
   }, []);

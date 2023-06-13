@@ -12,7 +12,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("product", () =>
-    fetch("https://manufacturer-website-server-side-topaz.vercel.app/product", {
+    fetch("http://localhost:5000/product", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

@@ -11,15 +11,12 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://manufacturer-website-server-side-topaz.vercel.app/booking?customerEmail=${user.email}`,
-        {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`http://localhost:5000/booking?customerEmail=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => {
           console.log("res", res);
           if (res.status === 401 || res.status === 403) {

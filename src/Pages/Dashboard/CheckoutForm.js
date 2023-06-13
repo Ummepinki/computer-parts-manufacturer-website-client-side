@@ -15,17 +15,14 @@ const CheckoutForm = ({ order }) => {
   const { _id, price, customerEmail, customerName } = order;
 
   useEffect(() => {
-    fetch(
-      "https://manufacturer-website-server-side-topaz.vercel.app/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch("http://localhost:5000/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -79,16 +76,13 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
       };
 
-      fetch(
-        `https://manufacturer-website-server-side-topaz.vercel.app/booking/${_id}`,
-        {
-          method: "PATCH",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: JSON.stringify(payment),
-        }
-      )
+      fetch(`http://localhost:5000/booking/${_id}`, {
+        method: "PATCH",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);
