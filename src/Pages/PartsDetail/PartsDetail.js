@@ -10,7 +10,7 @@ const PartsDetail = (part) => {
   const path = partId ? "/purchase/" + partId : "/purchase";
 
   useEffect(() => {
-    const url = `http://localhost:5000/parts`;
+    const url = `https://computer-parts-manufacturer-website.onrender.com/parts`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

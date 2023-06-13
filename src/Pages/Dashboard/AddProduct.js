@@ -32,14 +32,17 @@ const AddProduct = () => {
             img: img,
           };
 
-          fetch("http://localhost:5000/product", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify(product),
-          })
+          fetch(
+            "https://computer-parts-manufacturer-website.onrender.com/product",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: JSON.stringify(product),
+            }
+          )
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {

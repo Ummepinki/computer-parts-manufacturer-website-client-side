@@ -30,7 +30,7 @@ const Purchase = ({ orders, setOrders }) => {
       phone: phone,
     };
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://computer-parts-manufacturer-website.onrender.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

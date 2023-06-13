@@ -12,7 +12,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("product", () =>
-    fetch("http://localhost:5000/product", {
+    fetch("https://computer-parts-manufacturer-website.onrender.com/product", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
